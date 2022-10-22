@@ -357,7 +357,31 @@ def win():
   print("You win!! :)")
   if haswon == 0:
     haswon = 1
- 
+    winner.speed(speed)
+    winner.up()
+    winlist = ["Y","O","U"," ","W","O","N"," !"]
+    for o in range(8):
+      if o == 0:
+        winner.goto(xlist[o+1]+2,xlist[5])
+      elif o == 4:
+        winner.goto(xlist[o+1]-5,xlist[5])
+      else:
+        winner.goto(xlist[o+1],xlist[5])
+      winner.write(winlist[o], False, align="left", font=("Arial",40,"Normal"))
+    playerx = playery = 10
+    drawplayer()
+
+#The function that updates the player's position
+def drawplayer():
+  boxcheck()
+  player.clear()
+  player.speed(speed)
+  player.up()
+  player.goto(playerposlist[playerx],playerposlist[playery])
+  player.dot(20,"#ABCDEF")
+
+drawplayer()
+
 
 #The function that moves the player up
 def up():
